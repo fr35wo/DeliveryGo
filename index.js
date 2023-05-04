@@ -67,7 +67,7 @@ app.post('/feedback', async function (req, res) {
 
   try {
     await Feedbacks.create({  feedback });
-    res.status(401).send('<script>alert("sucess."); location.href="/";</script>');
+    res.status(401).send('<script>alert("소중한 의견 감사합니다."); location.href="/";</script>');
     res.render('/');
   } catch (error) {
     console.error(error);
@@ -110,7 +110,7 @@ app.post('/register', async function (req, res) {
       //register페이지에서 정보 입력하면 갱신해줌
       
       await Users.create(req.body);
-      res.redirect('/')
+      res.redirect('/login')
       console.log('데이터저장성공');
       
     }
@@ -149,7 +149,7 @@ app.post('/login', async function (req, res) {
     } else {
       // 전화번호가 일치하지 않는 경우
       console.log('로그인 실패! 회원가입해주세요');
-      res.render('login', { phone, message: '로그인에 실패하였습니다.' });
+      res.render('login', { phone, message: '로그인 실패! 회원가입을 해주세요' });
     }
   } catch (error) {
     console.error(error);
